@@ -4,8 +4,8 @@ Udacity Front End Web Developer Course project to create a responsive App using 
 
 ## Table of Contents
 * [Instructions](#Instructions)
-* [Usage](# Usage)
-* [Attributions](# Attributions)
+* [Usage](#Usage)
+* [Attributions](#Attributions)
 * [Service Worker](#Service Worker)
 * [APIs](#APIs)
 
