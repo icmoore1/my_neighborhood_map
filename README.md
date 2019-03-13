@@ -26,8 +26,9 @@ To run app:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Shows a list of immediate coffee shops around Charlotte, NC as well as a graphical representation on the map.
+Clicking on either the list item or the map will show a photo of the venue with the name.  Typing into the filter box will
+limit the listings based on the input data.
 
 ## Service Worker
 The service worker will cache the app in Production mode. Take the following steps:
