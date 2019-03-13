@@ -1,6 +1,6 @@
 # Neighborhood Map Project
 
-Udacity Front End Web Developer Course project to create a responsive App using React that implements a Map API [Google Maps](https://tomchentw.github.io/react-google-maps/) and another Venues type of API [FourSquare](https://developer.foursquare.com/) to show locations on a map via markers or photos with a filter-able list of those locations.  In this case it displays coffee shops located around Charlotte, NC.
+Udacity Front End Web Developer Course project to create a responsive App using React that implements a Map API [Google Maps](https://tomchentw.github.io/react-google-maps/) and another venues type of API [FourSquare](https://developer.foursquare.com/) to show locations on a map via markers or photos with a filter-able list of those locations.  In this case it displays coffee shops located around Charlotte, NC.
 
 ## Table of Contents
 * [Instructions](#Instructions)
