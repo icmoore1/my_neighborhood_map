@@ -1,7 +1,13 @@
 /* global google */
 import React, {Component} from "react";
 
-import {withScriptjs,withGoogleMap,GoogleMap,Marker,InfoWindow} from 'react-google-maps';
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  InfoWindow
+} from 'react-google-maps';
 
 const MyMapComponent = withScriptjs(
    withGoogleMap(props => (
@@ -9,7 +15,11 @@ const MyMapComponent = withScriptjs(
       defaultZoom={8}
       zoom={props.zoom}
       defaultCenter={{ lat: -34.397, lng: 150.644 }}
-      center={props.center}
+  //    center={props.center}
+     center={{
+       lat: parseFloat(props.center.lat),
+       lng: parseFloat(props.center.lng)
+     }}
       >
     {props.markers &&
        props.markers.filter(marker => marker.isVisible).map((marker, index, arr) => {
@@ -18,33 +28,34 @@ const MyMapComponent = withScriptjs(
            <Marker
             key={index}
             position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => props.handleMarkerClick(marker)} animation={
-            arr.length === 1
-              ? google.maps.Animation.BOUNCE
-              : google.maps.Animation.DROP
-            }
+            onClick={() => props.handleMarkerClick(marker)}
+               animation={
+               arr.length === 1
+                ? google.maps.Animation.BOUNCE
+                : google.maps.Animation.DROP
+               }
             >
-            {marker.isOpen &&  venueInfo.bestPhoto && (
+            {marker.isOpen &&
+              venueInfo.bestPhoto && (
               <InfoWindow>
                 <React.Fragment>
-                <img
+                <img className="venuePhoto"
                   src={`${venueInfo.bestPhoto.prefix}200x200${
                     venueInfo.bestPhoto.suffix
                    }`}
                    alt={`${venueInfo.name}`}
-                        />
-              <p>{venueInfo.name}</p>
+                 />
+                 <p>{venueInfo.name}</p>
                 </React.Fragment>
-                    </InfoWindow>
-                )}
-                </Marker>
-                );
-              })}
-        </GoogleMap>
-    ))
-  );
-
-
+              </InfoWindow>
+            )
+          }
+          </Marker>
+        );
+      })}
+    </GoogleMap>
+  ))
+);
 
 export default class Map extends Component {
   render() {

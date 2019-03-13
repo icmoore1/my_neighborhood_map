@@ -48,6 +48,7 @@ export default class SideBar extends Component {
     />
       <VenueList
         {...this.props}
+        venues={this.handleFilterVenues()}
         handleListItemClick={this.props.handleListItemClick}/>
       </div>)
     };

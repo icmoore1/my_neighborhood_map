@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SquareAPI from './API/';
+import SquareAPI from './API/APIfile.js';
 import './App.css';
 import Map from './component/Map';
 import SideBar from './component/SideBar';
@@ -18,6 +18,7 @@ class App extends Component {
      };
    }
 
+/* Function to close all markers*/
    closeAllMarkers = () => {
        const markers = this.state.markers.map(marker => {
          marker.isOpen = false;
@@ -28,7 +29,6 @@ class App extends Component {
 
    handleMarkerClick = (marker) => {
       this.closeAllMarkers();
-      //console.log(marker);
       marker.isOpen = true;
       this.setState({ markers: Object.assign(this.state.markers, marker) });
 
@@ -50,11 +50,11 @@ class App extends Component {
 
   componentDidMount(){
     SquareAPI.search({
-      near:"Austin,TX",
-      query:"tacos",
+      near:"Charlotte,NC",
+      query:"restaurants",
       limit: 10
     }).then(results => {
-      //console.log(results));
+console.log(results);
       const { venues } = results.response;
         const { center } = results.response.geocode.feature.geometry;
         const markers = venues.map(venue => {
@@ -72,28 +72,36 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
-      <Map {...this.state} handleMarkerClick={this.handleMarkerClick} />
-      </div>
+      <main>
+        <header id="title">
+          <h1>Charlotte Area Neighborhood Map</h1>
+          <h2>This map shows Coffee Shops around Charlotte, NC</h2>
+        </header>
+        <section>
+          <div className="App">
+          <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
+          <Map {...this.state} handleMarkerClick={this.handleMarkerClick} />
+         </div>
+       </section>
+    </main>
     );
   }
 }
 
-//componentDidMount(){
+// componentDidMount(){
 //  SquareAPI.search({
 //    near:"Austin,TX",
 //    query:"tacos",
 //    limit: 10
 //  }).then(results => console.log(results));
-//}
-//render() {
+// }
+// render() {
 //  return (
 //    <div className="App">
 //      <Map/>
 //    </div>
 //  );
-//}
-//}
+// }
+// }
 
 export default App;

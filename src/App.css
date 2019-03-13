@@ -59,3 +59,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+@media (max-width: 575px) {
+  #map {
+    height: 100vh;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 1.1rem;
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

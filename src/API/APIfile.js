@@ -8,8 +8,9 @@ class Helper {
       client_secret: 'DOAOTX52EGBVXK0CEYA4R3ZF1DBJ4FGILQEWNF4GAOPXXP4C',
       v: '20190311'
     };
-    return Object.keys(keys).map(key => `${key}=${keys[key]}`)
-      .join('&');
+    return Object.keys(keys)
+        .map(key => `${key}=${keys[key]}`)
+        .join('&');
   }
 
   static urlBuilder(urlParams) {
@@ -26,6 +27,17 @@ class Helper {
     };
   }
 
+  // https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb
+  static checkStatus(response) {
+    if (response.ok) {
+      return response;
+    } else {
+      let error = new Error(response.statusText);
+      error = response;
+      throw error;
+    }
+  }
+
   static simpleFetch(endpoint, method, urlParams) {
      let requestData = {
        method,
@@ -36,7 +48,12 @@ class Helper {
        urlParams
      )}`,
      requestData
-   ).then(response => response.json());
+   ).then(Helper.checkStatus).then(response => response.json())
+      .catch(error => {
+        alert(
+          'An error occurred while trying to fetch data from Foursquare - Error Code of: ' +error.response
+        );
+      });
  }
 }
 export default class SquareAPI {

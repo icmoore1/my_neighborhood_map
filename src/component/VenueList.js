@@ -5,12 +5,12 @@ export default class VenueList extends Component {
   render() {
     return (
       <ol className="venueList">
-      {this.props.venues &&
+       {this.props.venues &&
          this.props.venues.map((venue, index) => (
-               <ListItem
-               key={index}
-               {...venue}
-               handleListItemClick={this.props.handleListItemClick}
+          <ListItem
+             key={index}
+             {...venue}
+            handleListItemClick={this.props.handleListItemClick}
           />
         ))}
       </ol>
