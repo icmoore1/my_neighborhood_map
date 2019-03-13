@@ -50,6 +50,7 @@ export default class SideBar extends Component {
         {...this.props}
         venues={this.handleFilterVenues()}
         handleListItemClick={this.props.handleListItemClick}/>
-      </div>)
+        <p>Made with API's by GoogleMaps and Foursquare</p>
+        </div>)
     };
   }

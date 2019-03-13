@@ -11,7 +11,7 @@ class App extends Component {
        venues: [],
        markers: [],
        center: [],
-       zoom: 12,
+       zoom: 15,
        updateSuperState: obj => {
         this.setState(obj);
        }
@@ -27,6 +27,7 @@ class App extends Component {
        this.setState({ markers: Object.assign(this.state.markers, markers) });
      };
 
+/* Function for marker click*/
    handleMarkerClick = (marker) => {
       this.closeAllMarkers();
       marker.isOpen = true;
@@ -38,25 +39,30 @@ class App extends Component {
     SquareAPI.getVenueDetails(marker.id).then(res => {
         const newVenue = Object.assign(venue, res.response.venue);
         this.setState({ venues: Object.assign(this.state.venues, newVenue) });
-        console.log(newVenue);
+//console.log("getVenueDetails app.js line 41");
+//console.log(newVenue);
       });
   };
 
+/* Function for sidebar list click.*/
   handleListItemClick = venue => {
      const marker = this.state.markers.find(marker => marker.id === venue.id);
      this.handleMarkerClick(marker)
   //  console.log(venue)
   }
-
+/* API data search */
   componentDidMount(){
     SquareAPI.search({
       near:"Charlotte,NC",
-      query:"restaurants",
+      query:"coffee",
       limit: 10
     }).then(results => {
-console.log(results);
+//console.log("line57 in App.js: ");
+//console.log(results);
       const { venues } = results.response;
+//console.log(venues);
         const { center } = results.response.geocode.feature.geometry;
+//console.log(center);
         const markers = venues.map(venue => {
           return {
             lat: venue.location.lat,
@@ -75,7 +81,7 @@ console.log(results);
       <main>
         <header id="title">
           <h1>Charlotte Area Neighborhood Map</h1>
-          <h2>This map shows Coffee Shops around Charlotte, NC</h2>
+          <h2>This map shows Coffee Shops around Charlotte, NC and will allow filtering in the box below.</h2>
         </header>
         <section>
           <div className="App">

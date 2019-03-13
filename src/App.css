@@ -8,6 +8,9 @@
 .sideBar {
   width: 25%;
 }
+.foursquareDIV {
+  width: 5%;
+}
 #search {
   width:100%;
   height: 2rem;
@@ -29,6 +32,16 @@
    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
  }
 
+ h1 {
+   font-family: serif;
+   font-size: 2rem;
+   align-items: center;
+   justify-content: center;
+ }
+
+ h2, .card-subtitle {
+   font-family: 'Bellefair', serif;
+ }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

@@ -4,9 +4,9 @@ class Helper {
   }
   static auth() {
     const keys = {
-      client_id: '2UYQNSXWEVKBSPYUDNBB3DYOU3JQCM313RM3DYC2TEHS0AVI',
-      client_secret: 'DOAOTX52EGBVXK0CEYA4R3ZF1DBJ4FGILQEWNF4GAOPXXP4C',
-      v: '20190311'
+      client_id: 'KO3TD3NVLWBRQDZZS0UO2YYJIOHC0ZCOQ51TXIPWETHRMQ4B',
+      client_secret: '1LFOTBOBSYQ2C2FFMFVII0AA4X1UAQ0YQEBKLQSLXSPSRRYJ',
+      v: '20190313'
     };
     return Object.keys(keys)
         .map(key => `${key}=${keys[key]}`)
@@ -27,7 +27,7 @@ class Helper {
     };
   }
 
-  // https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb
+/* API calls to Foursquare are limited. Function verifies response and displays message if error occurs. */
   static checkStatus(response) {
     if (response.ok) {
       return response;
@@ -48,14 +48,17 @@ class Helper {
        urlParams
      )}`,
      requestData
-   ).then(Helper.checkStatus).then(response => response.json())
+   ).then(Helper.checkStatus)
+   .then(response => response.json())
       .catch(error => {
         alert(
-          'An error occurred while trying to fetch data from Foursquare - Error Code of: ' +error.response
+          'An error occurred while trying to fetch data from Foursquare- Requests exceeded.'
         );
       });
  }
 }
+
+/*Foursquare API call*/
 export default class SquareAPI {
   static search(urlParams) {
     return Helper.simpleFetch('/venues/search', 'GET', urlParams);

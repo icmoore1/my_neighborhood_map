@@ -24,6 +24,8 @@ const MyMapComponent = withScriptjs(
     {props.markers &&
        props.markers.filter(marker => marker.isVisible).map((marker, index, arr) => {
          const venueInfo = props.venues.find(venue => venue.id === marker.id);
+//console.log(venueInfo.bestPhoto); // undefined
+//console.log(index);// just numbers 0-9
          return (
            <Marker
             key={index}
