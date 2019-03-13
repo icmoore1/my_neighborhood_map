@@ -4,10 +4,9 @@ Udacity Front End Web Developer Course project to create a responsive App using 
 
 ## Table of Contents
 * [Instructions](#Instructions)
-* [Usage](#Usage)
-* [Attributions](#Attributions)
-* [Service Worker](#Service Worker)
+* [ServiceWorker](#ServiceWorker)
 * [APIs](#APIs)
+* [Attributions](#Attributions)
 
 
 
@@ -26,11 +25,11 @@ To run app:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Shows a list of immediate coffee shops around Charlotte, NC as well as a graphical representation on the map.
+The app shows a list of immediate coffee shops around Charlotte, NC as well as a graphical representation on the map.
 Clicking on either the list item or the map will show a photo of the venue with the name.  Typing into the filter box will
 limit the listings based on the input data.
 
-## Service Worker
+## ServiceWorker
 The service worker will cache the app in Production mode. Take the following steps:
 1. npm run build
 2. npm install -g serve
