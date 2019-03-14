@@ -31,11 +31,15 @@ const MyMapComponent = withScriptjs(
             key={index}
             position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => props.handleMarkerClick(marker)}
-               animation={
-               arr.length === 1
-                ? google.maps.Animation.BOUNCE
-                : google.maps.Animation.DROP
-               }
+          //  animation={google.maps.Animation.BOUNCE}  bounces all
+          //animation= {this.props.google.maps.Animation.DROP}
+            animation={
+              marker.isOpen === true
+              ? google.maps.Animation.BOUNCE
+              : marker.isOpen === false
+              ? null
+              : google.maps.Animation.DROP
+            }
             >
             {marker.isOpen &&
               venueInfo.bestPhoto && (

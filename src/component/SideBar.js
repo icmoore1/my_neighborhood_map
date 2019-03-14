@@ -10,7 +10,6 @@ export default class SideBar extends Component {
      };
    }
 
-
    handleFilterVenues = () => {
     if (this.state.query.trim() !== '') {
       const venues = this.props.venues.filter(venue =>
@@ -41,6 +40,7 @@ export default class SideBar extends Component {
   render() {
     return (<div className="sidebar">
     <input
+       label={"search"}
        type={"search"}
        id={"search"}
        placeholder={"Filter Venues"}
