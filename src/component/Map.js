@@ -63,11 +63,12 @@ const MyMapComponent = withScriptjs(
   ))
 );
 
+
 export default class Map extends Component {
   render() {
      return (
     <MyMapComponent
-    //  isMarkerShown
+    // isMarkerShown
       {...this.props}
       googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDvTdcm9JDj35YXqDbyWVBjDgDciYWuLPo"
       loadingElement={<div style={{ height: `100%` }} />}
@@ -76,5 +77,5 @@ export default class Map extends Component {
       mapElement={<div style={{ height: `100%` }} />}
     />
    );
-  }
+ }
 }

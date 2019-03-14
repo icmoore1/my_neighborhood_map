@@ -4,9 +4,14 @@ import './App.css';
 import Map from './component/Map';
 import SideBar from './component/SideBar';
 
+
+window.APIvalid=true;
 window.gm_authFailure=()=>{
  alert('An Error occured while retrieving GoogleMaps API! Please try again later.');
+   window.APIvalid= false;
 };
+
+
 
 class App extends Component {
   constructor() {
@@ -16,6 +21,7 @@ class App extends Component {
        markers: [],
        center: [],
        zoom: 15,
+    //   APIvalid: true,
        updateSuperState: obj => {
         this.setState(obj);
        }
@@ -37,14 +43,14 @@ class App extends Component {
       marker.isOpen = true;
       this.setState({ markers: Object.assign(this.state.markers, marker) });
       const venue = this.state.venues.find(venue => venue.id === marker.id);
-    //  venue.animation = 1;
-    //  marker.animation = 1;
-    //  console.log(venue, "here 35");
     //  SquareAPI.getVenueDetails(marker.id).then(res => console.log(res));
-    SquareAPI.getVenueDetails(marker.id).then(res => {
-        const newVenue = Object.assign(venue, res.response.venue);
-        this.setState({ venues: Object.assign(this.state.venues, newVenue) });
-      });
+    //console.log(window.APIvalid);
+    if (window.APIvalid) {
+        SquareAPI.getVenueDetails(marker.id).then(res => {
+            const newVenue = Object.assign(venue, res.response.venue);
+            this.setState({ venues: Object.assign(this.state.venues, newVenue) });
+          });
+      }
   };
 
 /* Function for sidebar list click.*/
@@ -75,7 +81,9 @@ class App extends Component {
           };
         });
         this.setState({ venues, markers, center });
-      });
+      }).catch(alert("Error encountered while retrieving data, please retry later.") ,
+               window.APIvalid= false
+               )
     }
 
   render() {

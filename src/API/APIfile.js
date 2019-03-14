@@ -38,7 +38,7 @@ class Helper {
     }
   }
 
-  static simpleFetch(endpoint, method, urlParams) {
+    static simpleFetch(endpoint, method, urlParams) {
      let requestData = {
        method,
        headers: Helper.headers()
@@ -51,8 +51,10 @@ class Helper {
    ).then(Helper.checkStatus)
    .then(response => response.json())
       .catch(error => {
-        alert(
-          'An error occurred while trying to fetch data from Foursquare- Requests exceeded.'
+        window.APIvalid= false;
+        //this.setState({ APIvalid: false });
+      //  assign_APIvalid("set","false");
+        alert('An error occurred while trying to fetch data from Foursquare- Requests exceeded.'
         );
       });
  }
