@@ -66,7 +66,12 @@ const MyMapComponent = withScriptjs(
 
 export default class Map extends Component {
   render() {
+//    if (1===1) {
+//  console.log("window.APIvalid on 71");
+//  console.log(window.APIvalid);
+  //    if (window.APIvalid === true) {
      return (
+
     <MyMapComponent
     // isMarkerShown
       {...this.props}
@@ -77,5 +82,10 @@ export default class Map extends Component {
       mapElement={<div style={{ height: `100%` }} />}
     />
    );
- }
+// } else{
+//   return (
+//      <div>Error - Data not returned. </div>
+//   )
+ //}
+ } //render
 }

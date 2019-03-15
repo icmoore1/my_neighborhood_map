@@ -5,10 +5,11 @@ import Map from './component/Map';
 import SideBar from './component/SideBar';
 
 
-window.APIvalid=true;
+window.APIvalid=true
 window.gm_authFailure=()=>{
  alert('An Error occured while retrieving GoogleMaps API! Please try again later.');
    window.APIvalid= false;
+  window.location.reload();
 };
 
 
@@ -45,12 +46,14 @@ class App extends Component {
       const venue = this.state.venues.find(venue => venue.id === marker.id);
     //  SquareAPI.getVenueDetails(marker.id).then(res => console.log(res));
     //console.log(window.APIvalid);
-    if (window.APIvalid) {
+  //  console.log(venue);
+    console.log(window.APIvalid);
+    if (window.APIvalid === true) {
         SquareAPI.getVenueDetails(marker.id).then(res => {
             const newVenue = Object.assign(venue, res.response.venue);
             this.setState({ venues: Object.assign(this.state.venues, newVenue) });
           });
-      }
+     }
   };
 
 /* Function for sidebar list click.*/
@@ -69,6 +72,8 @@ class App extends Component {
       limit: 10
     }).then(results => {
 //console.log(results);
+     //results.response = results.response !== undefined ? results.response : [];
+      //const { venues } = results.response !+= undefined ? results.response : [];
       const { venues } = results.response;
         const { center } = results.response.geocode.feature.geometry;
         const markers = venues.map(venue => {
