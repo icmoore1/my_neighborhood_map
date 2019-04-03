@@ -75,7 +75,7 @@ export default class Map extends Component {
     <MyMapComponent
     // isMarkerShown
       {...this.props}
-      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDvTdcm9JDj35YXqDbyWVBjDgDciYWuLPo"
+      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=key"
       loadingElement={<div style={{ height: `100%` }} />}
     //  containerElement={<div style={{ height: `400px` }} />}
       containerElement={<div style={{ height: `100%`, width: '75%' }} />}
